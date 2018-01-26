@@ -35,16 +35,25 @@ public class Sql2oElementDaoTest {
     }
 
     @Test
-    public void addingReviewSetsId() throws Exception {
+    public void addingElementSetsId() throws Exception {
         Group testGroup = setupGroup();
         Period testPeriod = setupPeriod();
         groupDao.add(testGroup);
         periodDao.add(testPeriod);
         Element testElement = setupElement();
-        testElement.setGroupId(testGroup.getName());
-        testElement.setPeriodId(testPeriod.getName());
+//        testElement.setGroupId(testGroup.getName());
+//        testElement.setPeriodId(testPeriod.getName());
         elementDao.add(testElement);
         assertEquals(1, testElement.getId());
+    }
+
+    @Test
+    public void allElementsAreReturned() throws Exception {
+        Element testElement = setupElement();
+        Element anotherElement = new Element("Hydrogen", "H", 1, 1.00, 1, 1, 0, 0 );
+        elementDao.add(testElement);
+        elementDao.add(anotherElement);
+        assertEquals(1, elementDao.getAll().size());
     }
 
     public Element setupElement() {
