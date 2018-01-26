@@ -7,8 +7,9 @@ CREATE TABLE IF NOT EXISTS elements (
  atomicNumber INTEGER,
  atomicMass DOUBLE,
  groupNumber INTEGER,
+ periodNumber INTEGER,
  groupId INTEGER,
- periodId INTEGER,
+ periodId INTEGER
 );
 
 CREATE TABLE IF NOT EXISTS groups (
