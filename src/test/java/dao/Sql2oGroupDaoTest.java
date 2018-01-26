@@ -33,7 +33,7 @@ public class Sql2oGroupDaoTest {
         Group anotherGroup = new Group(2);
         groupDao.add(testGroup);
         groupDao.add(anotherGroup);
-        assertEquals(1, groupDao.getAll().size());
+        assertEquals(2, groupDao.getAll().size());
     }
 
     public Group setupGroup() {
