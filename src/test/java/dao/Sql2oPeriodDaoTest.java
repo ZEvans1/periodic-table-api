@@ -33,7 +33,7 @@ public class Sql2oPeriodDaoTest {
         Period anotherPeriod = new Period(2);
         periodDao.add(testPeriod);
         periodDao.add(anotherPeriod);
-        assertEquals(1, periodDao.getAll().size());
+        assertEquals(2, periodDao.getAll().size());
     }
 
     public Period setupPeriod() {
