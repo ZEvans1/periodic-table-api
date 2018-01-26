@@ -13,6 +13,14 @@ public class Element {
     private int periodId;
 
     public Element(String name, String symbol, int atomicNumber, int atomicMass, int groupNumber, int periodNumber, int groupId, int periodId) {
+        this.name = name;
+        this.symbol = symbol;
+        this.atomicNumber = atomicNumber;
+        this.atomicMass = atomicMass;
+        this.groupNumber = groupNumber;
+        this.periodNumber = periodNumber;
+        this.groupId = groupId;
+        this.periodId = periodId;
 
     }
 }
