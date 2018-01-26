@@ -13,7 +13,7 @@ public class Sql2oElementDao implements ElementDao {
 
     @Override
     public void add(Element element) {
-        String sql = "INSERT INTO elements (name, symbol, atomicNumber, atomicMass, groupNumber, periodNumber) VALUES (:name, :symbol, :atomicNumber, :atomicMass, :groupNumber, :periodNumber)";
+        String sql = "INSERT INTO elements (name, symbol, atomicNumber, atomicMass, groupNumber, periodNumber, groupId, periodId) VALUES (:name, :symbol, :atomicNumber, :atomicMass, :groupNumber, :periodNumber, :groupId, :periodId)";
 
         try (Connection con = sql2o.open()) {
             int id = (int) con.createQuery(sql)
