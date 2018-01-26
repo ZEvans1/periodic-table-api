@@ -1,5 +1,6 @@
 package dao;
 
+import models.Element;
 import models.Group;
 import org.junit.After;
 import org.junit.Before;
@@ -13,6 +14,7 @@ public class Sql2oGroupDaoTest {
 
     private Connection conn;
     private Sql2oGroupDao groupDao;
+    private Sql2oElementDao elementDao;
 
     @Before
     public void setUp() throws Exception {
@@ -36,7 +38,15 @@ public class Sql2oGroupDaoTest {
         assertEquals(2, groupDao.getAll().size());
     }
 
+
+
     public Group setupGroup() {
         return new Group(1);
     }
+
+    public Element setupElement() {
+        return new Element("Carbon", "C", 12, 12.01, 14, 2, 0, 0);
+    }
+
+
 }

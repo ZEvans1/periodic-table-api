@@ -9,6 +9,8 @@ import org.junit.Test;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
+import java.util.Arrays;
+
 import static org.junit.Assert.*;
 
 public class Sql2oElementDaoTest {
@@ -55,6 +57,27 @@ public class Sql2oElementDaoTest {
         elementDao.add(anotherElement);
         assertEquals(2, elementDao.getAll().size());
     }
+
+    @Test
+    public void addElementsToGroupsReturnsCorrectly() throws Exception {
+        Element testElement = setupElement();
+        elementDao.add(testElement);
+        Element anotherElement = new Element("Hydrogen", "H", 1, 1.00, 1, 1, 0, 0 );
+        elementDao.add(anotherElement);
+
+        Group testGroup = new Group(1);
+        groupDao.add(testGroup);
+        elementDao.addElementToGroup(testElement, testGroup);
+
+        Element[] elements = {testElement, anotherElement};
+
+        assertEquals(groupDao.getAllElementsForAGroup(testGroup.getId()), Arrays.asList(elements));
+    }
+
+
+
+
+    //setup
 
     public Element setupElement() {
         return new Element("Carbon", "C", 12, 12.01, 14, 2, 0, 0);

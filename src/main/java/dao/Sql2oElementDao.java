@@ -1,6 +1,7 @@
 package dao;
 
 import models.Element;
+import models.Group;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
@@ -33,6 +34,29 @@ public class Sql2oElementDao implements ElementDao {
         try (Connection con =sql2o.open()){
             return con.createQuery("SELECT * FROM elements")
                     .executeAndFetch(Element.class);
+        }
+    }
+
+    @Override
+    public Element findById(int id) {
+        String sql = "SELECT * FROM elements WHERE id = :id";
+        try (Connection con = sql2o.open()) {
+            return con.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeAndFetchFirst(Element.class);
+        }
+    }
+
+    @Override
+    public void addElementToGroup (Element element, Group group) {
+        String sql = "INSERT INTO groups_elements (groupid, elementid) VALUES (:groupid, :elementid)";
+        try (Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("groupid", group.getId())
+                    .addParameter("elementid", element.getId())
+                    .executeUpdate();
+        } catch (Sql2oException ex) {
+            System.out.println(ex);
         }
     }
 }

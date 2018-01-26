@@ -21,3 +21,9 @@ CREATE TABLE IF NOT EXISTS periods (
  id int PRIMARY KEY auto_increment,
  name INTEGER
 );
+
+CREATE TABLE IF NOT EXISTS groups_elements (
+ id int PRIMARY KEY auto_increment,
+ elementid INTEGER,
+ groupid INTEGER
+);
