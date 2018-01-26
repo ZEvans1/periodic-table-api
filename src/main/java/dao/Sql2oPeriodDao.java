@@ -5,6 +5,8 @@ import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
 
+import java.util.List;
+
 public class Sql2oPeriodDao implements PeriodDao {
 
     private final Sql2o sql2o;
@@ -24,6 +26,14 @@ public class Sql2oPeriodDao implements PeriodDao {
             period.setId(id);
         } catch (Sql2oException ex) {
             System.out.println(ex);
+        }
+    }
+
+    @Override
+    public List<Period> getAll(){
+        try (Connection con =sql2o.open()){
+            return con.createQuery("SELECT * FROM periods")
+                    .executeAndFetch(Period.class);
         }
     }
 }
