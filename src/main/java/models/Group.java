@@ -38,4 +38,24 @@ public class Group {
     public void setId(int id) {
         this.id = id;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Group group = (Group) o;
+
+        if (id != group.id) return false;
+        if (!name.equals(group.name)) return false;
+        return specialName != null ? specialName.equals(group.specialName) : group.specialName == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name.hashCode();
+        result = 31 * result + (specialName != null ? specialName.hashCode() : 0);
+        result = 31 * result + id;
+        return result;
+    }
 }

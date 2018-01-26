@@ -95,4 +95,36 @@ public class Element {
     public void setPeriodId(int periodId) {
         this.periodId = periodId;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Element element = (Element) o;
+
+        if (atomicNumber != element.atomicNumber) return false;
+        if (atomicMass != element.atomicMass) return false;
+        if (groupNumber != element.groupNumber) return false;
+        if (periodNumber != element.periodNumber) return false;
+        if (id != element.id) return false;
+        if (groupId != element.groupId) return false;
+        if (periodId != element.periodId) return false;
+        if (!name.equals(element.name)) return false;
+        return symbol.equals(element.symbol);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name.hashCode();
+        result = 31 * result + symbol.hashCode();
+        result = 31 * result + atomicNumber;
+        result = 31 * result + atomicMass;
+        result = 31 * result + groupNumber;
+        result = 31 * result + periodNumber;
+        result = 31 * result + id;
+        result = 31 * result + groupId;
+        result = 31 * result + periodId;
+        return result;
+    }
 }
