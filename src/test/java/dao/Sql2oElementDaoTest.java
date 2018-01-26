@@ -89,7 +89,7 @@ public class Sql2oElementDaoTest {
 
         elementDao.add(anotherElement);
 
-        assertEquals(1, elementDao.getAllElementsByPeriod(testPeriod.getId()).size());
+        assertEquals(2, elementDao.getAllElementsByPeriod(testPeriod.getId()).size());
     }
 
 
