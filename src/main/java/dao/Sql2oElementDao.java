@@ -68,4 +68,13 @@ public class Sql2oElementDao implements ElementDao {
                     .executeAndFetch(Element.class);
         }
     }
+
+    @Override
+    public List<Element> getAllElementsByPeriod(int periodId) {
+        try (Connection con = sql2o.open()) {
+            return con.createQuery("SELECT * FROM elements WHERE periodId = :periodId")
+                    .addParameter("periodId", periodId)
+                    .executeAndFetch(Element.class);
+        }
+    }
 }

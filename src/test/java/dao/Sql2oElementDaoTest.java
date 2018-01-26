@@ -75,6 +75,23 @@ public class Sql2oElementDaoTest {
         assertEquals(2, elementDao.getAllElementsByGroup(testGroup.getId()).size());
     }
 
+    @Test
+    public void getAllElementsByPeriod() throws Exception {
+        Period testPeriod = new Period(1);
+        periodDao.add(testPeriod);
+        Period otherPeriod = new Period(1);
+        periodDao.add(otherPeriod);
+
+        Element testElement = new Element("Carbon", "C", 12, 12.01, 1, 1, 0, testPeriod.getId() );
+
+        elementDao.add(testElement);
+        Element anotherElement = new Element("Hydrogen", "H", 1, 1.00, 1, 1, 0, testPeriod.getId() );
+
+        elementDao.add(anotherElement);
+
+        assertEquals(1, elementDao.getAllElementsByPeriod(testPeriod.getId()).size());
+    }
+
 
 
 

@@ -11,6 +11,7 @@ public interface ElementDao {
 //    void addElementToGroup(Element element, Group group);
     List<Element> getAll();
     List<Element> getAllElementsByGroup(int groupId);
+    List<Element> getAllElementsByPeriod(int periodId);
     Element findById(int id);
 
 }
