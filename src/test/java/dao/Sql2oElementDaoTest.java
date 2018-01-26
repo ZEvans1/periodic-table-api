@@ -53,7 +53,7 @@ public class Sql2oElementDaoTest {
         Element anotherElement = new Element("Hydrogen", "H", 1, 1.00, 1, 1, 0, 0 );
         elementDao.add(testElement);
         elementDao.add(anotherElement);
-        assertEquals(1, elementDao.getAll().size());
+        assertEquals(2, elementDao.getAll().size());
     }
 
     public Element setupElement() {
