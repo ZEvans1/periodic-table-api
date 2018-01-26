@@ -1,18 +1,18 @@
 package models;
 
 public class Period {
-    private String name;
+    private int name;
     private int id;
 
-    public Period(String name) {
+    public Period(int name) {
         this.name = name;
     }
 
-    public String getName() {
+    public int getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(int name) {
         this.name = name;
     }
 
@@ -31,13 +31,13 @@ public class Period {
 
         Period period = (Period) o;
 
-        if (id != period.id) return false;
-        return name.equals(period.name);
+        if (name != period.name) return false;
+        return id == period.id;
     }
 
     @Override
     public int hashCode() {
-        int result = name.hashCode();
+        int result = name;
         result = 31 * result + id;
         return result;
     }

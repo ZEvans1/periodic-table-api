@@ -5,14 +5,14 @@ public class Element {
     private String name;
     private String symbol;
     private int atomicNumber;
-    private int atomicMass;
+    private double atomicMass;
     private int groupNumber;
     private int periodNumber;
     private int id;
     private int groupId;
     private int periodId;
 
-    public Element(String name, String symbol, int atomicNumber, int atomicMass, int groupNumber, int periodNumber, int groupId, int periodId) {
+    public Element(String name, String symbol, int atomicNumber, double atomicMass, int groupNumber, int periodNumber, int groupId, int periodId) {
         this.name = name;
         this.symbol = symbol;
         this.atomicNumber = atomicNumber;
@@ -48,11 +48,11 @@ public class Element {
         this.atomicNumber = atomicNumber;
     }
 
-    public int getAtomicMass() {
+    public double getAtomicMass() {
         return atomicMass;
     }
 
-    public void setAtomicMass(int atomicMass) {
+    public void setAtomicMass(double atomicMass) {
         this.atomicMass = atomicMass;
     }
 
@@ -104,7 +104,7 @@ public class Element {
         Element element = (Element) o;
 
         if (atomicNumber != element.atomicNumber) return false;
-        if (atomicMass != element.atomicMass) return false;
+        if (Double.compare(element.atomicMass, atomicMass) != 0) return false;
         if (groupNumber != element.groupNumber) return false;
         if (periodNumber != element.periodNumber) return false;
         if (id != element.id) return false;
@@ -116,10 +116,13 @@ public class Element {
 
     @Override
     public int hashCode() {
-        int result = name.hashCode();
+        int result;
+        long temp;
+        result = name.hashCode();
         result = 31 * result + symbol.hashCode();
         result = 31 * result + atomicNumber;
-        result = 31 * result + atomicMass;
+        temp = Double.doubleToLongBits(atomicMass);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
         result = 31 * result + groupNumber;
         result = 31 * result + periodNumber;
         result = 31 * result + id;

@@ -1,7 +1,10 @@
 package dao;
 
+import models.Element;
+import models.Group;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Test;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
@@ -11,6 +14,7 @@ public class Sql2oElementDaoTest {
 
     private Connection conn;
     private Sql2oElementDao elementDao;
+    private Sql2oGroupDao groupDao;
 
 
     @Before
@@ -24,5 +28,22 @@ public class Sql2oElementDaoTest {
     @After
     public void tearDown() throws Exception {
         conn.close();
+    }
+
+    @Test
+    public void addingReviewSetsId() throws Exception {
+        Group testGroup = setupGroup();
+        groupDao.add(testGroup);
+        Review testReview = new Review("Captain Kirk", "food coma!", 3, testRestaurant.getId());
+        reviewDao.add(testReview);
+        assertEquals(1, testReview.getId());
+    }
+
+    public Element setupElement() {
+        return new Element("Carbon", "C", 12, 12.01, 14, 2, 14, 2);
+    }
+
+    public Group setupGroup() {
+        return new Group(1);
     }
 }
