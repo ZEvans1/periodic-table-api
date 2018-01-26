@@ -8,8 +8,9 @@ import java.util.List;
 public interface ElementDao {
 
     void add(Element element);
-    void addElementToGroup(Element element, Group group);
-
+//    void addElementToGroup(Element element, Group group);
     List<Element> getAll();
+    List<Element> getAllElementsByGroup(int groupId);
     Element findById(int id);
+
 }

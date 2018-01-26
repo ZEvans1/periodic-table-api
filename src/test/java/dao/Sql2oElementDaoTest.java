@@ -59,19 +59,20 @@ public class Sql2oElementDaoTest {
     }
 
     @Test
-    public void addElementsToGroupsReturnsCorrectly() throws Exception {
-        Element testElement = setupElement();
-        elementDao.add(testElement);
-        Element anotherElement = new Element("Hydrogen", "H", 1, 1.00, 1, 1, 0, 0 );
-        elementDao.add(anotherElement);
-
+    public void getAllElementsByGroup() throws Exception {
         Group testGroup = new Group(1);
         groupDao.add(testGroup);
-        elementDao.addElementToGroup(testElement, testGroup);
+        Group otherGroup = new Group(1);
+        groupDao.add(otherGroup);
 
-        Element[] elements = {testElement, anotherElement};
+        Element testElement = new Element("Carbon", "C", 12, 12.01, 1, 1, testGroup.getId(), 0 );
 
-        assertEquals(groupDao.getAllElementsForAGroup(testGroup.getId()), Arrays.asList(elements));
+        elementDao.add(testElement);
+        Element anotherElement = new Element("Hydrogen", "H", 1, 1.00, 1, 1, testGroup.getId(), 0 );
+
+        elementDao.add(anotherElement);
+
+        assertEquals(2, elementDao.getAllElementsByGroup(testGroup.getId()).size());
     }
 
 
