@@ -20,7 +20,6 @@ public class Sql2oElementDaoTest {
     private Sql2oGroupDao groupDao;
     private Sql2oPeriodDao periodDao;
 
-
     @Before
     public void setUp() throws Exception {
         String connectionString = "jdbc:h2:mem:testing;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
@@ -66,10 +65,8 @@ public class Sql2oElementDaoTest {
         groupDao.add(otherGroup);
 
         Element testElement = new Element("Carbon", "C", 12, 12.01, 1, 1, testGroup.getId(), 0 );
-
         elementDao.add(testElement);
         Element anotherElement = new Element("Hydrogen", "H", 1, 1.00, 1, 1, testGroup.getId(), 0 );
-
         elementDao.add(anotherElement);
 
         assertEquals(2, elementDao.getAllElementsByGroup(testGroup.getId()).size());
@@ -83,17 +80,12 @@ public class Sql2oElementDaoTest {
         periodDao.add(otherPeriod);
 
         Element testElement = new Element("Carbon", "C", 12, 12.01, 1, 1, 0, testPeriod.getId() );
-
         elementDao.add(testElement);
         Element anotherElement = new Element("Hydrogen", "H", 1, 1.00, 1, 1, 0, testPeriod.getId() );
-
         elementDao.add(anotherElement);
 
         assertEquals(2, elementDao.getAllElementsByPeriod(testPeriod.getId()).size());
     }
-
-
-
 
     //setup
 

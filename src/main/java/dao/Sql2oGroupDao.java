@@ -40,25 +40,37 @@ public class Sql2oGroupDao implements GroupDao {
     }
 
     @Override
-    public List<Element> getAllElementsForAGroup(int groupId) {
-            ArrayList<Element> elements = new ArrayList<>();
-            String joinQuery = "SELECT elementid FROM groups_elements WHERE groupid = :groupid";
-
-            try (Connection con = sql2o.open()) {
-                List<Integer> allElementIds = con.createQuery(joinQuery)
-                        .addParameter("groupid", groupId)
-                        .executeAndFetch(Integer.class);
-
-                for(Integer elementId : allElementIds) {
-                    String elementQuery = "SELECT * FROM elements WHERE id = :elementid";
-                    elements.add(
-                            con.createQuery(elementQuery)
-                    .addParameter("elementid", elementId)
-                    .executeAndFetchFirst(Element.class));
-                }
-            } catch (Sql2oException ex) {
-                System.out.println(ex);
-            }
-            return elements;
+    public Group findById(int id){
+            String sql = "SELECT * FROM groups WHERE id = :id";
+        try (Connection con = sql2o.open()){
+            return con.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeAndFetchFirst(Group.class);
+        }
     }
+
+
+
+//    @Override
+//    public List<Element> getAllElementsForAGroup(int groupId) {
+//            ArrayList<Element> elements = new ArrayList<>();
+//            String joinQuery = "SELECT elementid FROM groups_elements WHERE groupid = :groupid";
+//
+//            try (Connection con = sql2o.open()) {
+//                List<Integer> allElementIds = con.createQuery(joinQuery)
+//                        .addParameter("groupid", groupId)
+//                        .executeAndFetch(Integer.class);
+//
+//                for(Integer elementId : allElementIds) {
+//                    String elementQuery = "SELECT * FROM elements WHERE id = :elementid";
+//                    elements.add(
+//                            con.createQuery(elementQuery)
+//                    .addParameter("elementid", elementId)
+//                    .executeAndFetchFirst(Element.class));
+//                }
+//            } catch (Sql2oException ex) {
+//                System.out.println(ex);
+//            }
+//            return elements;
+//    }
 }

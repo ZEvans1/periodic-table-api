@@ -8,5 +8,5 @@ import java.util.List;
 public interface GroupDao {
     void add(Group group);
     List<Group> getAll();
-    List<Element> getAllElementsForAGroup(int groupId);
+    Group findById(int id);
 }
