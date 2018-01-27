@@ -14,12 +14,12 @@ _This is code for the beginning of an API for the periodic table of elements. Us
 * _View groups, periods, or elements
 * _Assign elements to groups
 
-_Next steps are: _
+_Next steps are:_
 
 * _Assign elements to periods_
-* _Allow sorting of elements (atomic number, atomic mass, alphabetical, etc)
+* _Allow sorting of elements (atomic number, atomic mass, alphabetical, etc)_
 
-_This was designed so that additional properties like electron configuration or isotopes could be easily added to the objects and database later on.
+_This was designed so that additional properties like electron configuration or isotopes could be easily added to the objects and database later on._
 
 
 ## Setup/Installation Requirements
