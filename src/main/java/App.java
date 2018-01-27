@@ -9,6 +9,7 @@ import org.sql2o.Sql2o;
 
 import java.util.List;
 
+import static spark.Spark.after;
 import static spark.Spark.get;
 import static spark.Spark.post;
 
@@ -46,19 +47,29 @@ public class App {
         });
 
         //show elements in a group
-        get("/groups/:id/elements", "application/json", (req,res) -> {
+        get("/groups/:id/elements", "application/json", (req, res) -> {
             int groupId = Integer.parseInt(req.params("id"));
             Group groupToFind = groupDao.findById(groupId);
             List<Element> elements;
             elements = elementDao.getAllElementsByGroup(groupId);
-                return gson.toJson(elements);
+            return gson.toJson(elements);
+        });
+
+        //add elements to a group
+        post("/groups/:groupId/elements/new", "application/json", (req, res) -> {
+            int groupId = Integer.parseInt(req.params("groupId"));
+            Element element = gson.fromJson(req.body(), Element.class);
+            element.setGroupId(groupId);
+            elementDao.add(element);
+            res.status(201);
+            return gson.toJson(element);
         });
 
 
+        //Filters
+        after((req, res) -> {
+            res.type("application/json");
+        });
     }
-
-    //Filters
-    after((req, res) -> {
-        res.type("application/json");
-    });
 }
+
