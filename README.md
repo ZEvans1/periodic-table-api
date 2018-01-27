@@ -6,7 +6,20 @@
 
 ## Description
 
-_This is code for the beginning of an API for the periodic table of elements._
+_This is code for the beginning of an API for the periodic table of elements. Using REST, the following actions are currently possible:_
+
+* _Create groups for the table (columns)_
+* _Create periods for the table (rows)_
+* _Create elements_
+* _View groups, periods, or elements
+* _Assign elements to groups
+
+_Next steps are: _
+
+* _Assign elements to periods_
+* _Allow sorting of elements (atomic number, atomic mass, alphabetical, etc)
+
+_This was designed so that additional properties like electron configuration or isotopes could be easily added to the objects and database later on.
 
 
 ## Setup/Installation Requirements
@@ -32,6 +45,7 @@ _Contact email: zte.zachary@gmail.com_
 * _Spark_
 * _H2_
 * _Postman_
-_A screen shot is shown below of how Postman was used to test routes within the App.java file._
+_Screen shots below show how Postman was used to test routes within the App.java file. Specifically, they show how to create a new group and a new element._
 
-![alt text](PostmanNewGroup.png)
+![Screenshot of Postman](PostmanNewGroup.png)
+![Screenshot of Postman](PostmanNewElement.png)
