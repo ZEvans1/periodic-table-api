@@ -47,19 +47,6 @@ public class Sql2oElementDao implements ElementDao {
         }
     }
 
-//    @Override
-//    public void addElementToGroup (Element element, Group group) {
-//        String sql = "INSERT INTO groups_elements (groupid, elementid) VALUES (:groupid, :elementid)";
-//        try (Connection con = sql2o.open()) {
-//            con.createQuery(sql)
-//                    .addParameter("groupid", group.getId())
-//                    .addParameter("elementid", element.getId())
-//                    .executeUpdate();
-//        } catch (Sql2oException ex) {
-//            System.out.println(ex);
-//        }
-//    }
-
     @Override
     public List<Element> getAllElementsByGroup(int groupId) {
         try (Connection con = sql2o.open()) {
