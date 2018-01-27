@@ -11,8 +11,8 @@ _This is code for the beginning of an API for the periodic table of elements. Us
 * _Create groups for the table (columns)_
 * _Create periods for the table (rows)_
 * _Create elements_
-* _View groups, periods, or elements
-* _Assign elements to groups
+* _View groups, periods, or elements_
+* _Assign elements to groups_
 
 _Next steps are:_
 
